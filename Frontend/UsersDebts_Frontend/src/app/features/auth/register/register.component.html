@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-title>Registro</mat-card-title>
+  <form (ngSubmit)="register()">
+    <mat-form-field>
+      <input matInput placeholder="Nombre" [(ngModel)]="name" name="name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Apellido" [(ngModel)]="lastName" name="lastName" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Teléfono" [(ngModel)]="phoneNumber" name="phoneNumber">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Registrarse</button>
+  </form>
+</mat-card>

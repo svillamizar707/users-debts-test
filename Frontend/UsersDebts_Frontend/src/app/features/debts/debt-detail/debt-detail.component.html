@@ -1,0 +1,9 @@
+<mat-card *ngIf="debt">
+  <mat-card-title>Detalle de Deuda</mat-card-title>
+  <mat-card-content>
+    <p><strong>Descripción:</strong> {{ debt.description }}</p>
+    <p><strong>Monto:</strong> {{ debt.amount }}€</p>
+    <p><strong>Estado:</strong> {{ debt.status }}</p>
+    <p><strong>Deudor:</strong> {{ debt.toUserId }}</p>
+  </mat-card-content>
+</mat-card>
