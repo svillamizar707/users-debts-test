@@ -8,6 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-login',
@@ -41,11 +43,20 @@ export class LoginComponent {
     this.errorMessage = '';
   }
 
-  constructor(private auth: AuthService, private cdr: ChangeDetectorRef, private router: Router) {
+  constructor(private auth: AuthService, private cdr: ChangeDetectorRef, private router: Router, private dialog: MatDialog) {
     const userId = localStorage.getItem('userId');
     if (userId !== null && userId !== undefined && userId !== '') {
       this.router.navigate(['/debts']);
     }
+  }
+
+  openRegisterModal() {
+    this.dialog.open(RegisterComponent, {
+      width: '50vw',
+      height: '70vh',
+      panelClass: 'register-modal',
+      disableClose: false
+    });
   }
 
   login() {

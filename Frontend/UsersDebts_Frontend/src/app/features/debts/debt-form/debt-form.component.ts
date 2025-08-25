@@ -56,7 +56,16 @@ export class DebtFormComponent {
     this.debt.userId = userId ? Number(userId) : null;
     this.debt.createdAt = new Date().toISOString().slice(0, 10); // yyyy-mm-dd
     this.debtService.createDebt(this.debt).subscribe(() => {
-      this.router.navigate(['/debts']);
+      this.debt = {
+        description: '',
+        amount: 0,
+        userId: null,
+        createdAt: '',
+        isPaid: false,
+        paidAt: null
+      };
+      // Si quieres redireccionar, descomenta la siguiente línea:
+      // this.router.navigate(['/debts']);
     });
   }
 }

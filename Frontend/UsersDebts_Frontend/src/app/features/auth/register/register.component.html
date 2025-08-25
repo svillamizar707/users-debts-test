@@ -1,21 +1,22 @@
-<mat-card>
-  <mat-card-title>Registro</mat-card-title>
-  <form (ngSubmit)="register()">
-    <mat-form-field>
-      <input matInput placeholder="Nombre" [(ngModel)]="name" name="name" required>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Apellido" [(ngModel)]="lastName" name="lastName" required>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Teléfono" [(ngModel)]="phoneNumber" name="phoneNumber">
-    </mat-form-field>
+<div style="padding-top: 2rem; padding-bottom: 1rem; text-align:center; font-size:1.3rem; margin-bottom:18px;">Registro</div>
+<form (ngSubmit)="register()" style="display: flex; flex-direction: column; gap: 16px; padding: 24px;">
+  <mat-form-field>
+    <input matInput placeholder="Nombre" [(ngModel)]="name" name="name" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Apellido" [(ngModel)]="lastName" name="lastName" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Teléfono" [(ngModel)]="phoneNumber" name="phoneNumber">
+  </mat-form-field>
+  <div class="button-row" style="display: flex; gap: 12px; justify-content: flex-end;">
     <button mat-raised-button color="primary" type="submit">Registrarse</button>
-  </form>
-</mat-card>
+    <button mat-raised-button color="warn" type="button" (click)="onCancel()">Cancelar</button>
+  </div>
+</form>

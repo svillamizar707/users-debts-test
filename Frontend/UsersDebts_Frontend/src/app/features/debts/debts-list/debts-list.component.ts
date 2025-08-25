@@ -69,5 +69,6 @@ export class DebtsListComponent implements OnInit {
       data: debt,
       width: '700px'
     });
+    this.cdr.detectChanges();
   }
 }
