@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" style="justify-content: center; font-size: 1.3rem; color: #333333; font-weight: 700;">Deudas</mat-toolbar>
-<mat-button-toggle-group [(ngModel)]="filter" (change)="onFilterChange($event.value)">
+<mat-button-toggle-group [(ngModel)]="filter" (change)="onFilterChange($event.value)" style="margin-left: 10px;">
   <mat-button-toggle value="pending">Pendientes</mat-button-toggle>
   <mat-button-toggle value="paid">Pagadas</mat-button-toggle>
 </mat-button-toggle-group>

@@ -1,20 +1,46 @@
-/* Títulos y enlaces blancos */
-.login-title, .register-title, .login-link, .register-link, .outside-link {
-	color: #fff !important;
+/* Contenedor y tarjeta para login */
+.login-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
 }
+
+.login-card {
+	background: #fff;
+	border-radius: 16px;
+	box-shadow: 0 4px 24px rgba(25, 118, 210, 0.15);
+	padding: 36px 32px 28px 32px;
+	min-width: 340px;
+	max-width: 370px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+/* Título especial del proyecto */
+.project-title {
+	text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+	color: #fff;	
+	padding: 12px 0 10px 0;
+	box-shadow: 0 2px 8px rgba(25, 118, 210, 0.15);
+}
+
 .error-message {
 	color: #9d0606;
 	font-weight: bold;
 	margin-top: 10px;
 }
 mat-card-title, .outside-text, .outside-link {
-	color: #333333 !important;
+	color: #333333;
 }
 
 mat-card-title {
 	text-align: center;
 	margin-bottom: 24px;
-	color: #333333 !important;
+    font-size: 1.3rem;	
 }
 
 .outside-text {
@@ -22,20 +48,17 @@ mat-card-title {
 	text-align: center;
 }
 
-.outside-link {
-	color: #fff !important;
+.outside-link {	
 	text-decoration: underline;
 	cursor: pointer;
 }
 
 html, body {
-	min-height: 100vh;
-	width: 100vw;
+	height: 100vh;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-    background: linear-gradient(135deg, #1976d2 0%, #43cea2 100%);
-}
+	background: linear-gradient(135deg, #1976d2 0%, #43cea2 100%);
 }
 
 :host ::ng-deep body {
@@ -76,4 +99,50 @@ mat-form-field {
 	min-width: 250px;
 	max-width: 400px;
 	margin-bottom: 12px;
+	background: transparent !important;
+}
+
+.mat-form-field-infix {
+  background: transparent !important;
+}
+
+/* Elimina fondo oscuro detrás de los inputs */
+.mat-form-field-flex {
+  background: transparent !important;
+}
+
+.mat-form-field-wrapper {
+  background: transparent !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline,
+.mat-form-field-appearance-standard .mat-form-field-underline,
+.mat-form-field-appearance-fill .mat-form-field-underline {
+  display: none !important;
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+}
+
+/* Título fuera del recuadro blanco */
+.login-title-container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+  margin-bottom: 32px;
+}
+
+.main-login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #e0f7fa !important; /* color fijo */
+  border-radius: 4px !important;
 }

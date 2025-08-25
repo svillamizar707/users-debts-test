@@ -1,5 +1,5 @@
-<mat-card style="padding-top: 24px;">
-  <mat-card-title style="text-align: center; font-size: 1.3rem; color: #333333; font-weight: 700;">Nueva Deuda</mat-card-title>
+<div style="height: 100%; padding-top: 24px; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(25, 118, 210, 0.10); padding: 24px;">
+  <div style="text-align: center; font-size: 1.3rem; color: #333333; font-weight: 700; margin-bottom: 18px;">Nueva Deuda</div>
   <form (ngSubmit)="submit()">
     <mat-form-field>
       <input matInput placeholder="Descripción" [(ngModel)]="debt.description" name="description" required>
@@ -17,4 +17,4 @@
     </div>
     <button mat-raised-button color="primary" type="submit">Crear</button>
   </form>
-</mat-card>
+</div>
