@@ -53,7 +53,7 @@
 - Scripts SQL incluidos para facilitar la creación de la base de datos.
 
 ### Frontend
-- Proyecto desarrollado en Angular, usando componentes standalone y Angular Material para una interfaz moderna y responsiva.
+- Proyecto desarrollado en Angular 20.2.0, usando componentes standalone y Angular Material para una interfaz moderna y responsiva.
 - Lazy loading en los módulos principales para mejorar el rendimiento y la carga inicial.
 - Autenticación con login y registro, protegiendo rutas y mostrando el menú solo si el usuario está logueado.
 - Gestión de deudas: listado, creación, edición y detalle en modal, con validaciones y feedback visual.
