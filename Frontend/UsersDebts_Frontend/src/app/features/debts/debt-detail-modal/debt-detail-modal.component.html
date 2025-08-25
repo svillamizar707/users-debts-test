@@ -10,7 +10,7 @@
     <p *ngIf="debt.isPaid"><strong>Fecha de pago:</strong> {{ formatDate(debt.paidAt) }}</p>   
   </mat-card-content>
   <div class="debt-actions">
-    <button mat-raised-button color="primary" *ngIf="!debt.isPaid && !loading" (click)="markAsPaid()">Marcar como pagada</button>
+    <button mat-raised-button color="primary" style="cursor: pointer;" *ngIf="!debt.isPaid && !loading" (click)="markAsPaid()">Marcar como pagada</button>
     <span *ngIf="loading">Marcando como pagada...</span>
     <button mat-button (click)="close()">Cerrar</button>
   </div>

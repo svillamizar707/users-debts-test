@@ -31,6 +31,7 @@ export class RegisterComponent {
   password = '';
   lastName = '';
   phoneNumber = '';
+  errorMsg: string = '';
 
   constructor(
     private auth: AuthService,
@@ -40,28 +41,42 @@ export class RegisterComponent {
   ) {}
 
   register() {
+    this.errorMsg = '';
+    // Validar campos requeridos
+    if (!this.name || !this.lastName || !this.email || !this.password) {
+      this.errorMsg = 'Por favor complete todos los campos requeridos.';
+      this.cdr.detectChanges();
+      return;
+    }
     this.auth.register({
       name: this.name,
       lastName: this.lastName,
       email: this.email,
       password: this.password,
       phoneNumber: this.phoneNumber
-    }).subscribe(() => {
-      this.name = '';
-      this.lastName = '';
-      this.email = '';
-      this.password = '';
-      this.phoneNumber = '';
-      setTimeout(() => {
-        this.dialogRef.close();
-        this.router.navigate(['/login']);
-      }, 0);
+    }).subscribe({
+      next: () => {
+        this.name = '';
+        this.lastName = '';
+        this.email = '';
+        this.password = '';
+        this.phoneNumber = '';
+        this.onCancel();
+        this.cdr.detectChanges();
+      },
+      error: (err) => { 
+        if (err?.error && err.error.includes('Email')) {
+          this.errorMsg = 'El email ya está registrado.';
+        } else {
+          this.errorMsg = 'Error al registrar usuario.';
+        }
+        this.cdr.detectChanges();
+      }
     });
-  }
+}
 
   onCancel() {
     this.dialogRef.close();
   }
 
-  openAsDialog?: boolean;
 }

@@ -6,8 +6,7 @@
     </mat-form-field>
     <mat-form-field>
       <input matInput type="number" placeholder="Monto (€)" [(ngModel)]="debt.amount" name="amount" required>
-    </mat-form-field>
-    <mat-checkbox [(ngModel)]="debt.isPaid" name="isPaid">Pagada</mat-checkbox>
+    </mat-form-field>   
     <mat-form-field *ngIf="debt.isPaid">
       <mat-label>Fecha de pago</mat-label>
       <input matInput type="date" [(ngModel)]="debt.paidAt" name="paidAt">

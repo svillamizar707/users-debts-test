@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ChangeDetectorRef  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -22,7 +22,7 @@ export class DebtDetailModalComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public debt: any,
     private dialogRef: MatDialogRef<DebtDetailModalComponent>,
-    private debtService: DebtService
+    private debtService: DebtService, private cdr: ChangeDetectorRef
   ) {}
 
   markAsPaid() {
@@ -31,6 +31,9 @@ export class DebtDetailModalComponent {
       next: () => {
         this.debt.isPaid = true;
         this.loading = false;
+        this.dialogRef.close({ reload: true });
+        this.cdr.detectChanges();       
+        
       },
       error: () => {
         this.loading = false;

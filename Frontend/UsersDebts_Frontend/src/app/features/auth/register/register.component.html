@@ -1,5 +1,5 @@
-<div style="padding-top: 2rem; padding-bottom: 1rem; text-align:center; font-size:1.3rem; margin-bottom:18px;">Registro</div>
-<form (ngSubmit)="register()" style="display: flex; flex-direction: column; gap: 16px; padding: 24px;">
+<div style="padding-top: 2rem; text-align:center; font-size:1.3rem; font-weight:700; margin-bottom:18px;">Registro</div>
+<form (ngSubmit)="register()" style="display: flex; flex-direction: column; gap: 16px; padding: 24px;"> 
   <mat-form-field>
     <input matInput placeholder="Nombre" [(ngModel)]="name" name="name" required>
   </mat-form-field>
@@ -15,7 +15,10 @@
   <mat-form-field>
     <input matInput placeholder="Teléfono" [(ngModel)]="phoneNumber" name="phoneNumber">
   </mat-form-field>
-  <div class="button-row" style="display: flex; gap: 12px; justify-content: flex-end;">
+   <div *ngIf="errorMsg" style="color: #c62828; margin-bottom: 8px; font-weight: 500; text-align: center;">
+    {{ errorMsg }}
+  </div>
+  <div class="button-row">
     <button mat-raised-button color="primary" type="submit">Registrarse</button>
     <button mat-raised-button color="warn" type="button" (click)="onCancel()">Cancelar</button>
   </div>

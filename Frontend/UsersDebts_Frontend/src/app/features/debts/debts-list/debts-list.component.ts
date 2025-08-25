@@ -65,10 +65,14 @@ export class DebtsListComponent implements OnInit {
   }
   
   logDebtId(debt: any) {
-    this.dialog.open(DebtDetailModalComponent, {
+    const dialogRef = this.dialog.open(DebtDetailModalComponent, {
       data: debt,
       width: '700px'
     });
-    this.cdr.detectChanges();
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && result.reload) {
+        this.loadAllDebts();
+      }
+    });
   }
 }

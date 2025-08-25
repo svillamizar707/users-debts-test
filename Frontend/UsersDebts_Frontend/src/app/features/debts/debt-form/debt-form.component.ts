@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { DebtService } from '../../../core/services/debt.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -44,9 +44,10 @@ export class DebtFormComponent {
     paidAt: null
   };
 
-  constructor(private debtService: DebtService, private router: Router) {}
+  constructor(private debtService: DebtService, private router: Router, private cdr: ChangeDetectorRef) {}
 
   submit() {
+    debugger;
     this.errorMsg = '';
     if (this.debt.amount < 0) {
       this.errorMsg = 'El monto no puede ser negativo.';
@@ -64,6 +65,8 @@ export class DebtFormComponent {
         isPaid: false,
         paidAt: null
       };
+      this.cdr.detectChanges();
+      alert('Deuda registrada con éxito');
       // Si quieres redireccionar, descomenta la siguiente línea:
       // this.router.navigate(['/debts']);
     });
