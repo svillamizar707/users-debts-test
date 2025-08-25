@@ -10,10 +10,12 @@ namespace UsersDebts_Backend.Services
     public class UserService : IUserService
     {
         private readonly AppDbContext _context;
+        private readonly ICacheService _cache;
 
-        public UserService(AppDbContext context)
+        public UserService(AppDbContext context, ICacheService cache)
         {
             _context = context;
+            _cache = cache;
         }
 
         public async Task<User?> RegisterAsync(RegisterUserRequest request)
@@ -29,23 +31,41 @@ namespace UsersDebts_Backend.Services
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+            // Limpiar caché de usuario por email
+            _cache.Remove($"user_email_{request.Email}");
             return user;
         }
 
         public async Task<User?> AuthenticateAsync(LoginRequest request)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+            string cacheKey = $"user_email_{request.Email}";
+            var cached = _cache.Get<User>(cacheKey);
+            User? user;
+            if (cached != null)
+            {
+                user = cached;
+            }
+            else
+            {
+                user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+                if (user != null)
+                    _cache.Set(cacheKey, user, TimeSpan.FromMinutes(5));
+            }
             if (user == null) return null;
-
             if (user.PasswordHash != HashPassword(request.Password))
                 return null;
-
             return user;
         }
 
         public async Task<User?> GetByIdAsync(int id)
         {
-            return await _context.Users.FindAsync(id);
+            string cacheKey = $"user_id_{id}";
+            var cached = _cache.Get<User>(cacheKey);
+            if (cached != null) return cached;
+            var user = await _context.Users.FindAsync(id);
+            if (user != null)
+                _cache.Set(cacheKey, user, TimeSpan.FromMinutes(5));
+            return user;
         }
 
         private static string HashPassword(string password)

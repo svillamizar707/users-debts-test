@@ -11,6 +11,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 //Inyección de dependencias de servicios  
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IDebtService, DebtService>();
+builder.Services.AddSingleton<ICacheService, InMemoryCacheService>();
 
 //Configuración Swagger
 builder.Services.AddEndpointsApiExplorer();

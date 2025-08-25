@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DebtService } from '../../../core/services/debt.service';
+import { ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DebtDetailModalComponent } from '../debt-detail-modal/debt-detail-modal.component';
 import { CommonModule } from '@angular/common';
@@ -31,28 +32,36 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class DebtsListComponent implements OnInit {
   debts: any[] = [];
+  allDebts: any[] = [];
   filter: string = 'pending';
 
-  constructor(private debtService: DebtService, private dialog: MatDialog) {}
+  constructor(private debtService: DebtService, private dialog: MatDialog, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.loadDebts();
+  this.loadAllDebts();
   }
 
-  loadDebts() {
-    let isPaid: boolean | undefined;
-    if (this.filter === 'true') isPaid = true;
-    else if (this.filter === 'false') isPaid = false;
-    else isPaid = undefined;
-    this.debtService.getDebts(isPaid).subscribe(data => {
-      console.log('Debts:', data);
-      this.debts = data;
+  loadAllDebts() {
+    this.debtService.getDebts().subscribe(data => {
+      this.allDebts = data;
+      this.filterDebts();
+      this.cdr.detectChanges();
     });
   }
 
+  filterDebts() {
+    if (this.filter === 'pending') {
+      this.debts = this.allDebts.filter(d => !d.isPaid);
+    } else if (this.filter === 'paid') {
+      this.debts = this.allDebts.filter(d => d.isPaid);
+    } else {
+      this.debts = this.allDebts;
+    }
+  }
+
   onFilterChange(newFilter: string) {
-    this.filter = newFilter;
-    this.loadDebts();
+  this.filter = newFilter;
+  this.filterDebts();
   }
   
   logDebtId(debt: any) {

@@ -1,3 +1,7 @@
+/* Títulos y enlaces blancos */
+.login-title, .register-title, .login-link, .register-link, .outside-link {
+	color: #fff !important;
+}
 .error-message {
 	color: #9d0606;
 	font-weight: bold;
@@ -30,11 +34,19 @@ html, body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	background: linear-gradient(135deg, #1976d2 0%, #43cea2 100%);
+    background: linear-gradient(135deg, #1976d2 0%, #43cea2 100%);
+}
 }
 
 :host ::ng-deep body {
 	background: linear-gradient(135deg, #1976d2 0%, #43cea2 100%) !important;
+}
+ 
+:host {
+	display: block;
+	min-height: 100vh;
+	width: 100vw;
+	background: linear-gradient(135deg, #1976d2 0%, #43cea2 100%);
 }
 
 mat-card {

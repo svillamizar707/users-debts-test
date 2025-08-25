@@ -1,7 +1,11 @@
-/* Estilos para el modal de detalle de deuda */
-
-:host {
-  display: block;
+.modal-title {
+  color: #333333;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.modal-header {
+  color: #2b2a2a;
 }
 
 .debt-actions {
@@ -9,4 +13,62 @@
   display: flex;
   gap: 8px;
   justify-content: flex-end;
+}
+
+.debt-actions button {
+  border-radius: 20px !important;
+  padding: 6px 22px;
+  font-size: 1rem;
+  border: 1.5px solid #bdbdbd !important;
+  background: #fff;
+  color: #333;
+  transition: box-shadow 0.2s;
+}
+
+.debt-actions button:hover {
+  box-shadow: 0 2px 8px #e0e0e0;
+}
+.debt-actions button {
+  border-radius: 20px !important;
+  padding: 6px 22px;
+  font-size: 1rem;
+  border: 1.5px solid #bdbdbd !important;
+  background: #fff;
+  color: #333;
+  transition: box-shadow 0.2s;
+}
+.debt-actions button:hover {
+  box-shadow: 0 2px 8px #e0e0e0;
+}
+/* Estilos para el modal de detalle de deuda */
+
+:host {
+  display: block;
+}
+
+mat-card {
+  padding: 32px 40px 24px 40px;
+}
+
+mat-card {
+  position: relative;
+  padding-top: 60px;
+  background: #f7f5f0;
+}
+
+.modal-header {
+  width: 100%;
+  background: #d8cbb2;
+  border-radius: 16px 16px 0 0;
+  padding: 18px 0 18px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-bottom: 24px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
 }

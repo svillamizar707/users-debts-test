@@ -27,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrls: ['./debt-form.component.css']
 })
 export class DebtFormComponent {
+  errorMsg: string = '';
   debt: {
     description: string;
     amount: number;
@@ -46,7 +47,11 @@ export class DebtFormComponent {
   constructor(private debtService: DebtService, private router: Router) {}
 
   submit() {
-    // Obtener el id del usuario actual (ajusta según tu lógica de autenticación)
+    this.errorMsg = '';
+    if (this.debt.amount < 0) {
+      this.errorMsg = 'El monto no puede ser negativo.';
+      return;
+    }
     const userId = localStorage.getItem('userId');
     this.debt.userId = userId ? Number(userId) : null;
     this.debt.createdAt = new Date().toISOString().slice(0, 10); // yyyy-mm-dd

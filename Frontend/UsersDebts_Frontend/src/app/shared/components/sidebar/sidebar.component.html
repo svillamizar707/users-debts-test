@@ -1,6 +1,6 @@
-<nav class="sidebar">
+<nav class="sidebar" style="margin-right: 32px;">
   <mat-nav-list>
-    <a mat-list-item routerLink="/debts" routerLinkActive="active">
+  <a mat-list-item routerLink="/debts" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
       <mat-icon>list</mat-icon>
       Listado de deudas
     </a>
