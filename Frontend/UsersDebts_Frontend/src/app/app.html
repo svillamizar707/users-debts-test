@@ -1,1 +1,14 @@
-<router-outlet />
+<ng-container *ngIf="isLoggedIn">
+	<app-navbar></app-navbar>
+	<div style="display: flex; min-height: 100vh; margin-top: 64px;">
+			<app-sidebar></app-sidebar>
+			<div class="main-content-bg" style="flex: 1;">
+					<router-outlet></router-outlet>
+			</div>
+	</div>
+</ng-container>
+<ng-container *ngIf="!isLoggedIn">
+	<div class="main-content-bg" style="min-height: 100vh;">
+		<router-outlet></router-outlet>
+	</div>
+</ng-container>

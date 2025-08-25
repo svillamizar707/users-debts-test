@@ -1,8 +1,8 @@
 <mat-toolbar color="primary">
   <span>Gestión de Deudas</span>
   <span class="spacer"></span>
-  <a mat-button routerLink="/debts">Deudas</a>
-  <a mat-button routerLink="/debts/new">Nueva deuda</a>
-  <a mat-button routerLink="/login">Login</a>
-  <a mat-button routerLink="/register">Registro</a>
+  <button mat-button (click)="logout()" style="margin-left: 16px; margin-right: 16px; font-weight: bold; color: #333333; display: flex; align-items: center; border-radius: 24px; padding: 6px 18px; background: #ececec; border: 1px solid #bdbdbd; cursor: pointer;">
+    <mat-icon style="margin-right: 8px;">logout</mat-icon>
+    Cerrar sesión
+  </button>
 </mat-toolbar>

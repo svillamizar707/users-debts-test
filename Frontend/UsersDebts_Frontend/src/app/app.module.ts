@@ -8,11 +8,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { App } from './app';
 
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { routes } from './app.routes';
 
 @NgModule({
   declarations: [
     // Si tienes componentes NO standalone, agrégalos aquí
+    // SidebarComponent NO debe ir aquí porque es standalone
   ],
   imports: [
     BrowserModule,
@@ -20,8 +22,9 @@ import { routes } from './app.routes';
     MaterialModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    App,
-    NavbarComponent
+  App,
+  NavbarComponent,
+  SidebarComponent
   ],
   bootstrap: [App]
 })

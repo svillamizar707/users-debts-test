@@ -3,8 +3,29 @@
   <mat-button-toggle value="pending">Pendientes</mat-button-toggle>
   <mat-button-toggle value="paid">Pagadas</mat-button-toggle>
 </mat-button-toggle-group>
-<mat-list>
-  <mat-list-item *ngFor="let debt of debts">
-    <a [routerLink]="['/debts', debt.id]">{{ debt.description }} - {{ debt.amount }}€</a>
-  </mat-list-item>
-</mat-list>
+<table mat-table [dataSource]="debts" class="mat-elevation-z2 debts-table">
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Descripción</th>
+    <td mat-cell *matCellDef="let debt">{{ debt.description }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="amount">
+    <th mat-header-cell *matHeaderCellDef>Monto (€)</th>
+    <td mat-cell *matCellDef="let debt">{{ debt.amount }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="isPaid">
+    <th mat-header-cell *matHeaderCellDef>Pagada</th>
+    <td mat-cell *matCellDef="let debt">{{ debt.isPaid ? 'Sí' : 'No' }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <td mat-cell *matCellDef="let debt">
+    <button mat-button color="primary" (click)="logDebtId(debt)">Ver detalle</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="['description', 'amount', 'isPaid', 'actions']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['description', 'amount', 'isPaid', 'actions']"></tr>
+</table>

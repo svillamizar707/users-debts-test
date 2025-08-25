@@ -1,0 +1,12 @@
+/* Estilos para el modal de detalle de deuda */
+
+:host {
+  display: block;
+}
+
+.debt-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}

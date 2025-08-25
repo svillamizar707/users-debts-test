@@ -1,0 +1,27 @@
+.sidebar {
+  width: 220px;
+  min-height: 100vh;
+  background: #d2c6a3 !important; /* mismo color que el navbar */
+  box-shadow: 2px 0 8px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  padding-top: 32px;
+}
+
+mat-nav-list {
+  width: 100%;
+}
+
+mat-list-item {
+  color: #fff;
+  font-weight: 500;
+}
+
+mat-icon {
+  margin-right: 12px;
+}
+
+.active {
+  background: rgba(255,255,255,0.18);
+  border-left: 4px solid #1976d2;
+}

@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-title>Detalle de Deuda</mat-card-title>
+  <mat-card-content>
+    <p><strong>Descripción:</strong> {{ debt.description }}</p>
+    <p><strong>Monto:</strong> {{ debt.amount }}€</p>
+    <p><strong>Pagada:</strong> {{ debt.isPaid ? 'Sí' : 'No' }}</p>
+  <p><strong>Fecha de creación:</strong> {{ formatDate(debt.createdAt) }}</p>
+  <p *ngIf="debt.isPaid"><strong>Fecha de pago:</strong> {{ formatDate(debt.paidAt) }}</p>
+    <p><strong>ID Usuario:</strong> {{ debt.userId }}</p>
+  </mat-card-content>
+  <div class="debt-actions">
+    <button mat-raised-button color="primary" *ngIf="!debt.isPaid && !loading" (click)="markAsPaid()">Marcar como pagada</button>
+    <span *ngIf="loading">Marcando como pagada...</span>
+    <button mat-button (click)="close()">Cerrar</button>
+  </div>
+</mat-card>

@@ -1,3 +1,23 @@
 .spacer {
   flex: 1 1 auto;
 }
+.navbar {
+  background: #d2c6a3 !important; /* beige más oscuro */
+  color: #333;
+}
+
+mat-toolbar {
+  background: #d2c6a3 !important; /* beige más oscuro */
+  color: #333 !important;
+  width: 100vw;
+  min-width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+body {
+  padding-top: 64px !important;
+}

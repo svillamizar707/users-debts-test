@@ -13,7 +13,7 @@ export interface RegisterPayload {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'http://localhost:5227/api/auth';
+  private apiUrl = 'http://localhost:49842';
 
   constructor(private http: HttpClient) {}
 
@@ -23,5 +23,6 @@ export class AuthService {
 
   register(data: RegisterPayload): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/register`, data);
-  }
+  }  
+ 
 }

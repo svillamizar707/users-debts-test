@@ -1,6 +1,8 @@
 <mat-card>
-  <mat-card-title>Login</mat-card-title>
-  <form (ngSubmit)="login()">
+  <mat-card-title *ngIf="!showRegister">Login</mat-card-title>
+  <mat-card-title *ngIf="showRegister">Registro</mat-card-title>
+
+  <form *ngIf="!showRegister" (ngSubmit)="login()">
     <mat-form-field>
       <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
     </mat-form-field>
@@ -9,4 +11,34 @@
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit">Entrar</button>
   </form>
+
+  <form *ngIf="showRegister" (ngSubmit)="register()">
+    <mat-form-field>
+      <input matInput placeholder="Nombre" [(ngModel)]="name" name="name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Apellido" [(ngModel)]="lastName" name="lastName" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Teléfono" [(ngModel)]="phoneNumber" name="phoneNumber">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Registrarse</button>
+  </form>
+
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <div class="outside-text">
+    <span *ngIf="!showRegister">¿No tienes cuenta?
+      <a class="outside-link" (click)="toggleRegister(true)">Regístrate aquí</a>
+    </span>
+    <span *ngIf="showRegister">¿Ya tienes cuenta?
+      <a class="outside-link" (click)="toggleRegister(false)">Inicia sesión</a>
+    </span>
+  </div>
 </mat-card>
